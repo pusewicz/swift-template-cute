@@ -1,0 +1,44 @@
+{
+  "version": 8,
+  "$schema": "https://cmake.org/cmake/help/latest/_downloads/3e2d73bff478d88a7de0de736ba5e361/schema.json",
+  "configurePresets": [
+    {
+      "name": "common",
+      "hidden": true,
+      "generator": "Ninja",
+      "binaryDir": "build"
+    },
+    {
+      "name": "debug",
+      "displayName": "Debug",
+      "inherits": "common",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "release",
+      "displayName": "Release",
+      "inherits": "common",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CF_FRAMEWORK_STATIC": true
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "game-debug",
+      "displayName": "Game Debug Build",
+      "configurePreset": "debug",
+      "configuration": "Debug"
+    },
+    {
+      "name": "game-release",
+      "displayName": "Game Release Build",
+      "configurePreset": "release",
+      "configuration": "Release",
+      "targets": ["game"]
+    }
+  ]
+}
